@@ -11,18 +11,18 @@ int main( int a_argc , char * a_argv[] )
     // probably as fast as can be without using SIMD instructions
     auto lonelyInteger = []( auto * a_data , size_t a_size )
     {
-        // get the type of "auto" that a_data is pointing to
+        // get the type of "auto"
         typedef typename std::remove_pointer<typename std::remove_reference<decltype(a_data)>::type>::type t_type;
 
-        register size_t l_typeSize{ sizeof( t_type ) };
-        register t_type l_value{ 0 };
+        size_t l_typeSize{ sizeof( t_type ) };
+        t_type l_value{ 0 };
 
         //
         // extra credit 1
         // why is lea used in the loop, instead of an add ?
         //
         // extra credit 2
-        // why is the assembly sequence sub, jnc used ?
+        // why is the sequence sub, jnc used ?
         //
         asm volatile
         (
@@ -41,7 +41,8 @@ int main( int a_argc , char * a_argv[] )
         return( l_value );
     };
 
-    std::vector<int> l_data = {1,2,4,3,1,2,3};
-//    std::vector<int> l_data = {}; // extra credit 2 hint...
+//    std::vector<uint8_t> l_data = {1,2,4,3,1,2,3};
+//    std::vector<int> l_data = {1,2,4,3,1,2,3};
+    std::vector<int> l_data = {}; // extra credit 2 hint...
     std::cout << lonelyInteger( l_data.data() , l_data.size() ) << std::endl;
 }
