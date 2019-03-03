@@ -544,6 +544,9 @@ class t_messageSchema : public t_node
             std::cout << "namespace " << value( "package" ) << std::endl;
             std::cout << "{" << std::endl;
             std::cout << std::endl;
+            std::cout << "    static constexpr int32_t g_description = " << value( "description" ) << ";" << std::endl;
+            std::cout << "    static constexpr int32_t g_version     = " << value( "version" ) << ";" << std::endl;
+            std::cout << std::endl;
             std::cout << "    static NEVER_INLINE void copy( char * a_dst , const char * a_src , size_t a_size )" << std::endl;
             std::cout << "    {" << std::endl;
             std::cout << "        while( ( *a_src != \'\\0\' ) && ( a_size ) )" << std::endl;
