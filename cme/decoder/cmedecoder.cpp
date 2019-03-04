@@ -538,7 +538,7 @@ class t_messageSchema : public t_node
             std::cout << "#include <iomanip>" << std::endl;
             std::cout << std::endl;
             std::cout << "#define ALWAYS_INLINE inline __attribute__((always_inline))" << std::endl;
-            std::cout << "#define NEVER_INLINE  [[gnu::noinline]] __attribute__((noinline))" << std::endl;
+            std::cout << "#define NEVER_INLINE  __attribute__((noinline))" << std::endl;
             std::cout << "#define PACK          __attribute__((packed))" << std::endl;
             std::cout << "#define HOT           __attribute__((hot))" << std::endl;
             std::cout << std::endl;
