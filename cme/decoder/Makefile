@@ -1,7 +1,7 @@
+all: info cmeCodeGen libtinyxml2.a
+
 info :
 	@echo "program to generate c-structs from cme template file"
-
-all: info cmeCodeGen libtinyxml2.a
 
 rebuild: clean all
 
