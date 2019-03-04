@@ -408,7 +408,7 @@ class t_group : public t_node
             std::cout << m_indentation << "    ALWAYS_INLINE const size_t elements() const { return( (size_t)m_dimension.m_numInGroup.value() ); }" << std::endl;
             std::cout << m_indentation << "    ALWAYS_INLINE const auto entriesBegin() const { return( &m_entries[0] ); }" << std::endl;
             std::cout << m_indentation << "    ALWAYS_INLINE const auto entriesEnd() const { return( &m_entries[ elements() ] ); }" << std::endl;
-            std::cout << m_indentation << "    ALWAYS_INLINE const void * const next(){ return( (void *)entriesEnd() ); }" << std::endl;
+            std::cout << m_indentation << "    ALWAYS_INLINE const void * next() const { return( (void *)entriesEnd() ); }" << std::endl;
             std::cout << m_indentation << "} PACK m_" << l_nodeName << ";" << std::endl;
             std::cout << std::endl;
         }
@@ -538,14 +538,14 @@ class t_messageSchema : public t_node
             std::cout << "#include <iomanip>" << std::endl;
             std::cout << std::endl;
             std::cout << "#define ALWAYS_INLINE inline __attribute__((always_inline))" << std::endl;
-            std::cout << "#define NEVER_INLINE  __attribute__((noinline))" << std::endl;
+            std::cout << "#define NEVER_INLINE  [[gnu::noinline]] __attribute__((noinline))" << std::endl;
             std::cout << "#define PACK          __attribute__((packed))" << std::endl;
+            std::cout << "#define HOT           __attribute__((hot))" << std::endl;
             std::cout << std::endl;
             std::cout << "namespace " << value( "package" ) << std::endl;
             std::cout << "{" << std::endl;
             std::cout << std::endl;
-            std::cout << "    static constexpr int32_t g_description = " << value( "description" ) << ";" << std::endl;
-            std::cout << "    static constexpr int32_t g_version     = " << value( "version" ) << ";" << std::endl;
+            std::cout << "    static constexpr int32_t g_version = " << value( "version" ) << ";" << std::endl;
             std::cout << std::endl;
             std::cout << "    static NEVER_INLINE void copy( char * a_dst , const char * a_src , size_t a_size )" << std::endl;
             std::cout << "    {" << std::endl;
