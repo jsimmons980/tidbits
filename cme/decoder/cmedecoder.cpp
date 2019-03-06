@@ -480,8 +480,8 @@ class t_message : public t_node
                     {
                         l_firstTime = false;
                         std::cout << std::endl;
-                        std::cout << m_indentation << "        auto l_group = reinterpret_cast<const void *>( &a_instance.m_padding[ sizeof( a_instance.m_padding ) ] );" << std::endl;
                         std::cout << m_indentation << "        a_stream << \"    m_padding-->[\" << sizeof( a_instance.m_padding ) << \"]\\n\";" << std::endl;
+                        std::cout << m_indentation << "        auto l_group = reinterpret_cast<const void *>( &a_instance.m_" << l_childName << " );" << std::endl;
                     }
                     auto l_groupName = "l_" + l_childName;
                     std::cout << m_indentation << "        { // group " << l_childName << std::endl;
